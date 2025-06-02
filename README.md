@@ -11,7 +11,9 @@
 **请注意！** 我们测试使用的系统并不是官方版本，而是基于 [此处讨论](https://github.com/orgs/ev3dev/discussions/1634#discussion-6831416) 提到的 Docker 镜像修改的。
 
 2 在 EV3 上为 Python 安装软件包 `Flask flask-cors evdev`。由于 EV3 本身性能较低，推荐直接修改系统，安装软件包后，再重新打包并烧录新系统。具体方法可参考上方“讨论”链接（注：原作者所给出的示例命令有误，实际使用请看下方示例）。  
-下面针对 `Ubuntu 22.04` 系统（已安装 Docker），按我们的实际操作给出示例。
+下面的示例针对 `Ubuntu 22.04` 系统（已安装 Docker），为上文讨论中的 Python 3.11 虚拟环境安装。
+如需使用其他 Python 版本，请参阅[记录：为乐高 EV3 安装带更新 Python 版本的 ev3dev 系统 / 安装所需 Python 软件包（2）](https://www.cgtsoft.com/archives/46/)进行编译安装。  
+本项目实际测试、运行的系统安装了 Python 3.13 ，镜像在上述链接文末给出。
 
 - 首先，安装所需软件包并拉取 Docker 镜像。
 
@@ -70,7 +72,7 @@ After=network.target
 [Service]
 User=robot
 WorkingDirectory=/home/robot
-ExecStart=/home/robot/venv311/bin/python3 /home/robot/python-src/app.py
+ExecStart=/home/robot/venv313/bin/python3 /home/robot/python-src/app.py
 Restart=always
 RestartSec=10
 StandardOutput=syslog
